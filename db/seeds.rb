@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+raw = JSON.parse(
+      RestClient.get("http://api.steampowered.com/" +
+                     "ISteamApps/GetAppList/v0002/"))
+
+raw["applist"]["apps"].each do |app|
+  Game.create(appid: app["appid"], name: app["name"])
+end

@@ -7,9 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= flash[:errors] %>
-<%= flash[:success] %>
-<%= yield %>
+  <%= render 'layouts/navbar' %>
 
+  <div class="container content">
+    <%= flash[:errors] %>
+    <%= flash[:success] %>
+    <%= yield %>
+  </div>
+
+  <footer class="container">
+    <%= render 'layouts/footer' %>
+  </footer>
 </body>
 </html>

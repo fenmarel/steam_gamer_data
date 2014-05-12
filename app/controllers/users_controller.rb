@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
       if @user.save
         flash[:success] = "Welcome to Steam Gamer Data!"
-        login!(user)
+        login!(@user)
         redirect_to user_url(@user)
       else
         flash.now[:errors] = @user.errors.full_messages
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:username, :email, :password, :steam_id)
   end
 
   def confirmed_password?
