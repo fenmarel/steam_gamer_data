@@ -27,4 +27,8 @@ module SteamGamerData
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
   end
+
+  Rails.application.config.middleware.use OmniAuth::Builder do
+    provider :steam, ENV['STEAM_API_KEY']
+  end
 end
